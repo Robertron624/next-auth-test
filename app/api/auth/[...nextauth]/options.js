@@ -24,10 +24,12 @@ export const options = {
         GoogleProvider({
             profile(profile) {
                 console.log("Profile Google: ", profile);
+                let userRole = "Google User";
 
                 return  {
                     ...profile,
                     id: profile.sub,
+                    role: userRole,
                 }
             },
             clientId: process.env.GOOGLE_ID,
@@ -47,15 +49,5 @@ export const options = {
             }
             return session;
         },
-    },
-
-    pages: {
-        signIn: '/auth/signin',
-    },
-    session: {
-        jwt: true,
-    },
-    jwt: {
-        secret: process.env.JWT_SECRET,
     },
 }
